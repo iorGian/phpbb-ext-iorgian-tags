@@ -1,0 +1,127 @@
+parameters:
+    iorgian.tags.table.tags: '%core.table_prefix%iorgian_tags'
+    iorgian.tags.table.topics: '%core.table_prefix%iorgian_tags_topics'
+    iorgian.tags.table.forum_cfg: '%core.table_prefix%iorgian_tags_forum_cfg'
+    iorgian.tags.table.groups: '%core.table_prefix%iorgian_tags_groups'
+
+services:
+    # iorgian.core.* references are optional (@?): if iorgian/core is disabled the
+    # board keeps working and Tags simply becomes inactive.
+    # iorgian.multiprefixes.* references are optional too: Tags works on its own.
+    iorgian.tags.normalizer:
+        class: iorgian\tags\service\normalizer
+        arguments:
+            - '@config'
+            - '@config_text'
+
+    iorgian.tags.repository:
+        class: iorgian\tags\service\repository
+        arguments:
+            - '@dbal.conn'
+            - '@auth'
+            - '@content.visibility'
+            - '@config'
+            - '@iorgian.tags.normalizer'
+            - '@?iorgian.core.acl'
+            - '%iorgian.tags.table.tags%'
+            - '%iorgian.tags.table.topics%'
+            - '%iorgian.tags.table.forum_cfg%'
+            - '%iorgian.tags.table.groups%'
+
+    iorgian.tags.prefix_bridge:
+        class: iorgian\tags\service\prefix_bridge
+        arguments:
+            - '@?iorgian.multiprefixes.repository'
+            - '@?iorgian.multiprefixes.renderer'
+            - '@iorgian.tags.normalizer'
+
+    iorgian.tags.renderer:
+        class: iorgian\tags\service\renderer
+        arguments:
+            - '@?iorgian.core.badge'
+            - '@controller.helper'
+
+    iorgian.tags.importer:
+        class: iorgian\tags\service\importer
+        arguments:
+            - '@dbal.conn'
+            - '@dbal.tools'
+            - '@iorgian.tags.repository'
+            - '@iorgian.tags.normalizer'
+            - '%core.table_prefix%'
+
+    iorgian.tags.search_filter:
+        class: iorgian\tags\service\search_filter
+        arguments:
+            - '@iorgian.tags.repository'
+            - '@iorgian.tags.normalizer'
+            - '@config'
+            - '@request'
+            - '@auth'
+
+    iorgian.tags.search_listener:
+        class: iorgian\tags\event\search_listener
+        arguments:
+            - '@iorgian.tags.search_filter'
+            - '@iorgian.tags.repository'
+            - '@iorgian.tags.renderer'
+            - '@config'
+            - '@request'
+            - '@template'
+            - '@language'
+            - '@controller.helper'
+        tags:
+            - { name: event.listener }
+
+    iorgian.tags.controller:
+        class: iorgian\tags\controller\main_controller
+        arguments:
+            - '@iorgian.tags.repository'
+            - '@iorgian.tags.renderer'
+            - '@iorgian.tags.prefix_bridge'
+            - '@iorgian.tags.normalizer'
+            - '@config'
+            - '@controller.helper'
+            - '@pagination'
+            - '@request'
+            - '@template'
+            - '@language'
+            - '@user'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+
+    iorgian.tags.acp_controller:
+        class: iorgian\tags\controller\acp_controller
+        arguments:
+            - '@iorgian.tags.repository'
+            - '@iorgian.tags.renderer'
+            - '@iorgian.tags.prefix_bridge'
+            - '@iorgian.tags.normalizer'
+            - '@iorgian.tags.importer'
+            - '@?iorgian.core.colors'
+            - '@?iorgian.core.color_field'
+            - '@?iorgian.core.forums'
+            - '@?iorgian.core.groups'
+            - '@config'
+            - '@config_text'
+            - '@pagination'
+            - '@request'
+            - '@template'
+            - '@language'
+
+    iorgian.tags.listener:
+        class: iorgian\tags\event\listener
+        arguments:
+            - '@iorgian.tags.repository'
+            - '@iorgian.tags.renderer'
+            - '@iorgian.tags.prefix_bridge'
+            - '@iorgian.tags.normalizer'
+            - '@?iorgian.core.acl'
+            - '@auth'
+            - '@config'
+            - '@request'
+            - '@template'
+            - '@language'
+            - '@controller.helper'
+        tags:
+            - { name: event.listener }

@@ -1,0 +1,41 @@
+<!-- INCLUDE overall_header.html -->
+
+<a id="maincontent"></a>
+
+<h1>{L_ACP_IORGIAN_TAGS_FORUMS}</h1>
+<p>{L_ACP_IORGIAN_TAGS_FORUMS_EXPLAIN}</p>
+
+<form id="iorgian_tags_forums" method="post" action="{U_ACTION}">
+	<table class="table1">
+		<thead>
+			<tr>
+				<th>{L_ACP_IORGIAN_TAGS_FORUM}</th>
+				<th>{L_ACP_IORGIAN_TAGS_ENABLED}</th>
+				<th>{L_ACP_IORGIAN_TAGS_MIN}</th>
+				<th>{L_ACP_IORGIAN_TAGS_MAX}</th>
+			</tr>
+		</thead>
+		<tbody>
+		<!-- BEGIN forums -->
+			<tr class="<!-- IF forums.S_ROW_COUNT is even -->row1<!-- ELSE -->row2<!-- ENDIF -->">
+				<td>{forums.PAD}{forums.NAME}</td>
+				<td><input type="checkbox" class="radio" name="enabled[{forums.ID}]" value="1"<!-- IF forums.S_ENABLED --> checked="checked"<!-- ENDIF --> /></td>
+				<td><input type="number" name="min_tags[{forums.ID}]" value="{forums.MIN}" min="0" max="20" /></td>
+				<td><input type="number" name="max_tags[{forums.ID}]" value="{forums.MAX}" min="0" max="20" /></td>
+			</tr>
+		<!-- BEGINELSE -->
+			<tr><td colspan="4">{L_ACP_IORGIAN_TAGS_NO_FORUMS}</td></tr>
+		<!-- END forums -->
+		</tbody>
+	</table>
+
+	<fieldset class="submit-buttons">
+		<legend>{L_SUBMIT}</legend>
+		<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+		<input class="button2" type="submit" name="enable_all" value="{L_ACP_IORGIAN_TAGS_ENABLE_ALL}" />&nbsp;
+		<input class="button2" type="submit" name="disable_all" value="{L_ACP_IORGIAN_TAGS_DISABLE_ALL}" />
+		{S_FORM_TOKEN}
+	</fieldset>
+</form>
+
+<!-- INCLUDE overall_footer.html -->

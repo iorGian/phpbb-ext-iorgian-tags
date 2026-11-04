@@ -1,0 +1,64 @@
+<!-- INCLUDE overall_header.html -->
+<!-- INCLUDECSS @iorgian_tags/iorgian_tags.css -->
+
+<h2 class="forum-title">{L_IORGIAN_TAGS_TOPICS_HEADING}{L_COLON} {IORGIAN_TAGS_TITLE}</h2>
+
+<!-- IF S_IORGIAN_TAGS_MULTI -->
+<p class="iorgian-tags-mode">
+	{L_IORGIAN_TAGS_MATCH}{L_COLON}
+	<!-- IF S_IORGIAN_TAGS_MODE_AND --><strong>{L_IORGIAN_TAGS_MODE_AND}</strong> | <a href="{U_IORGIAN_TAGS_OR}">{L_IORGIAN_TAGS_MODE_OR}</a>
+	<!-- ELSE --><a href="{U_IORGIAN_TAGS_AND}">{L_IORGIAN_TAGS_MODE_AND}</a> | <strong>{L_IORGIAN_TAGS_MODE_OR}</strong><!-- ENDIF -->
+</p>
+<!-- ENDIF -->
+
+<div class="action-bar bar-top">
+	<div class="pagination">
+		{IORGIAN_TAGS_TOTAL}
+		<!-- IF .pagination --><!-- INCLUDE pagination.html --><!-- ELSE -->&bull; {PAGE_NUMBER}<!-- ENDIF -->
+	</div>
+</div>
+
+<div class="forumbg">
+	<div class="inner">
+		<ul class="topiclist">
+			<li class="header">
+				<dl class="row-item">
+					<dt><div class="list-inner">{L_TOPICS}</div></dt>
+					<dd class="posts">{L_REPLIES}</dd>
+					<dd class="views">{L_VIEWS}</dd>
+					<dd class="lastpost"><span>{L_LAST_POST}</span></dd>
+				</dl>
+			</li>
+		</ul>
+		<ul class="topiclist topics">
+		<!-- BEGIN iorgian_tags_topics -->
+			<li class="row <!-- IF iorgian_tags_topics.S_ROW_COUNT is odd -->bg1<!-- ELSE -->bg2<!-- ENDIF -->">
+				<dl class="row-item topic_read">
+					<dt>
+						<div class="list-inner">
+							{iorgian_tags_topics.PREFIX_HTML}<a href="{iorgian_tags_topics.U_VIEW_TOPIC}" class="topictitle">{iorgian_tags_topics.TOPIC_TITLE}</a>
+							<br />
+							<div class="responsive-hide left-box">{L_IORGIAN_TAGS_IN_FORUM} <a href="{iorgian_tags_topics.U_VIEW_FORUM}">{iorgian_tags_topics.FORUM_NAME}</a> &raquo; {L_IORGIAN_TAGS_BY} {iorgian_tags_topics.AUTHOR_FULL} &raquo; {iorgian_tags_topics.FIRST_POST_TIME}</div>
+							<!-- IF iorgian_tags_topics.TAGS_HTML --><div class="iorgian-tags-row">{iorgian_tags_topics.TAGS_HTML}</div><!-- ENDIF -->
+						</div>
+					</dt>
+					<dd class="posts">{iorgian_tags_topics.REPLIES}</dd>
+					<dd class="views">{iorgian_tags_topics.VIEWS}</dd>
+					<dd class="lastpost"><span>{L_IORGIAN_TAGS_BY} {iorgian_tags_topics.LAST_AUTHOR_FULL}<br />{iorgian_tags_topics.LAST_POST_TIME} <a href="{iorgian_tags_topics.U_LAST_POST}" title="{L_VIEW_LATEST_POST}"><i class="icon fa-external-link-square fa-fw icon-lightgray icon-md" aria-hidden="true"></i></a></span></dd>
+				</dl>
+			</li>
+		<!-- BEGINELSE -->
+			<li class="row"><p style="padding: 10px;">{L_IORGIAN_TAGS_NO_TOPICS}</p></li>
+		<!-- END iorgian_tags_topics -->
+		</ul>
+	</div>
+</div>
+
+<div class="action-bar bar-bottom">
+	<div class="pagination">
+		{IORGIAN_TAGS_TOTAL}
+		<!-- IF .pagination --><!-- INCLUDE pagination.html --><!-- ELSE -->&bull; {PAGE_NUMBER}<!-- ENDIF -->
+	</div>
+</div>
+
+<!-- INCLUDE overall_footer.html -->

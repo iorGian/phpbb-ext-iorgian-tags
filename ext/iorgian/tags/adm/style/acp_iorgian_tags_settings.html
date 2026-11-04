@@ -1,0 +1,129 @@
+<!-- INCLUDE overall_header.html -->
+
+<a id="maincontent"></a>
+
+<h1>{L_ACP_IORGIAN_TAGS_SETTINGS}</h1>
+<p>{L_ACP_IORGIAN_TAGS_SETTINGS_EXPLAIN}</p>
+
+<form id="iorgian_tags_settings" method="post" action="{U_ACTION}">
+	<fieldset>
+		<legend>{L_ACP_IORGIAN_TAGS_SETTINGS}</legend>
+		<dl>
+			<dt><label for="users_create">{L_ACP_IORGIAN_TAGS_USERS_CREATE}{L_COLON}</label><br /><span>{L_ACP_IORGIAN_TAGS_USERS_CREATE_EXPLAIN}</span></dt>
+			<dd>
+				<label><input type="radio" class="radio" id="users_create" name="users_create" value="1"<!-- IF S_USERS_CREATE --> checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+				<label><input type="radio" class="radio" name="users_create" value="0"<!-- IF not S_USERS_CREATE --> checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="max_length">{L_ACP_IORGIAN_TAGS_MAX_LENGTH}{L_COLON}</label><br /><span>{L_ACP_IORGIAN_TAGS_MAX_LENGTH_EXPLAIN}</span></dt>
+			<dd><input type="number" id="max_length" name="max_length" value="{MAX_LENGTH}" min="2" max="100" /></dd>
+		</dl>
+		<dl>
+			<dt><label for="whitelist">{L_ACP_IORGIAN_TAGS_WHITELIST}{L_COLON}</label><br /><span>{L_ACP_IORGIAN_TAGS_WHITELIST_EXPLAIN}</span></dt>
+			<dd>
+				<label><input type="radio" class="radio" id="whitelist" name="whitelist" value="1"<!-- IF S_WHITELIST --> checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+				<label><input type="radio" class="radio" name="whitelist" value="0"<!-- IF not S_WHITELIST --> checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="default_enabled">{L_ACP_IORGIAN_TAGS_DEFAULT_ENABLED}{L_COLON}</label><br /><span>{L_ACP_IORGIAN_TAGS_DEFAULT_ENABLED_EXPLAIN}</span></dt>
+			<dd>
+				<label><input type="radio" class="radio" id="default_enabled" name="default_enabled" value="1"<!-- IF S_DEFAULT_ENABLED --> checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+				<label><input type="radio" class="radio" name="default_enabled" value="0"<!-- IF not S_DEFAULT_ENABLED --> checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="blacklist">{L_ACP_IORGIAN_TAGS_BLACKLIST}{L_COLON}</label><br /><span>{L_ACP_IORGIAN_TAGS_BLACKLIST_EXPLAIN}</span></dt>
+			<dd><textarea id="blacklist" name="blacklist" rows="5" cols="40">{BLACKLIST}</textarea></dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>{L_ACP_IORGIAN_TAGS_DISPLAY}</legend>
+		<dl>
+			<dt><label for="show_viewforum">{L_ACP_IORGIAN_TAGS_SHOW_VIEWFORUM}{L_COLON}</label><br /><span>{L_ACP_IORGIAN_TAGS_SHOW_VIEWFORUM_EXPLAIN}</span></dt>
+			<dd>
+				<label><input type="radio" class="radio" id="show_viewforum" name="show_viewforum" value="1"<!-- IF S_SHOW_VIEWFORUM --> checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+				<label><input type="radio" class="radio" name="show_viewforum" value="0"<!-- IF not S_SHOW_VIEWFORUM --> checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="cloud_index">{L_ACP_IORGIAN_TAGS_CLOUD_INDEX}{L_COLON}</label><br /><span>{L_ACP_IORGIAN_TAGS_CLOUD_INDEX_EXPLAIN}</span></dt>
+			<dd>
+				<label><input type="radio" class="radio" id="cloud_index" name="cloud_index" value="1"<!-- IF S_CLOUD_INDEX --> checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+				<label><input type="radio" class="radio" name="cloud_index" value="0"<!-- IF not S_CLOUD_INDEX --> checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="cloud_position">{L_ACP_IORGIAN_TAGS_CLOUD_POSITION}{L_COLON}</label><br /><span>{L_ACP_IORGIAN_TAGS_CLOUD_POSITION_EXPLAIN}</span></dt>
+			<dd>
+				<select id="cloud_position" name="cloud_position">
+					<option value="0"<!-- IF not S_CP_BOTTOM --> selected="selected"<!-- ENDIF -->>{L_ACP_IORGIAN_TAGS_CP_TOP}</option>
+					<option value="1"<!-- IF S_CP_BOTTOM --> selected="selected"<!-- ENDIF -->>{L_ACP_IORGIAN_TAGS_CP_BOTTOM}</option>
+				</select>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="cloud_max">{L_ACP_IORGIAN_TAGS_CLOUD_MAX}{L_COLON}</label><br /><span>{L_ACP_IORGIAN_TAGS_CLOUD_MAX_EXPLAIN}</span></dt>
+			<dd><input type="number" id="cloud_max" name="cloud_max" value="{CLOUD_MAX}" min="1" max="200" /></dd>
+		</dl>
+		<dl>
+			<dt><label for="show_count">{L_ACP_IORGIAN_TAGS_SHOW_COUNT}{L_COLON}</label><br /><span>{L_ACP_IORGIAN_TAGS_SHOW_COUNT_EXPLAIN}</span></dt>
+			<dd>
+				<label><input type="radio" class="radio" id="show_count" name="show_count" value="1"<!-- IF S_SHOW_COUNT --> checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+				<label><input type="radio" class="radio" name="show_count" value="0"<!-- IF not S_SHOW_COUNT --> checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="nav_link">{L_ACP_IORGIAN_TAGS_NAV_LINK}{L_COLON}</label><br /><span>{L_ACP_IORGIAN_TAGS_NAV_LINK_EXPLAIN}</span></dt>
+			<dd>
+				<label><input type="radio" class="radio" id="nav_link" name="nav_link" value="1"<!-- IF S_NAV_LINK --> checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+				<label><input type="radio" class="radio" name="nav_link" value="0"<!-- IF not S_NAV_LINK --> checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>{L_ACP_IORGIAN_TAGS_SEARCH_LEGEND}</legend>
+		<p>{L_ACP_IORGIAN_TAGS_SEARCH_NOTE}</p>
+		<dl>
+			<dt><label for="search_enabled">{L_ACP_IORGIAN_TAGS_SEARCH_ENABLED}{L_COLON}</label><br /><span>{L_ACP_IORGIAN_TAGS_SEARCH_ENABLED_EXPLAIN}</span></dt>
+			<dd>
+				<label><input type="radio" class="radio" id="search_enabled" name="search_enabled" value="1"<!-- IF S_SEARCH_ENABLED --> checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+				<label><input type="radio" class="radio" name="search_enabled" value="0"<!-- IF not S_SEARCH_ENABLED --> checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="search_enabled_only">{L_ACP_IORGIAN_TAGS_SEARCH_ENABLED_ONLY}{L_COLON}</label><br /><span>{L_ACP_IORGIAN_TAGS_SEARCH_ENABLED_ONLY_EXPLAIN}</span></dt>
+			<dd>
+				<label><input type="radio" class="radio" id="search_enabled_only" name="search_enabled_only" value="1"<!-- IF S_SEARCH_ENABLED_ONLY --> checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+				<label><input type="radio" class="radio" name="search_enabled_only" value="0"<!-- IF not S_SEARCH_ENABLED_ONLY --> checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>{L_ACP_IORGIAN_TAGS_MP_LEGEND}</legend>
+		<p><!-- IF S_MP_ACTIVE -->{L_ACP_IORGIAN_TAGS_MP_ACTIVE}<!-- ELSE -->{L_ACP_IORGIAN_TAGS_MP_INACTIVE}<!-- ENDIF --></p>
+		<dl>
+			<dt><label for="prefix_conflict">{L_ACP_IORGIAN_TAGS_PREFIX_CONFLICT}{L_COLON}</label><br /><span>{L_ACP_IORGIAN_TAGS_PREFIX_CONFLICT_EXPLAIN}</span></dt>
+			<dd>
+				<select id="prefix_conflict" name="prefix_conflict">
+					<option value="0"<!-- IF S_PC_NONE --> selected="selected"<!-- ENDIF -->>{L_ACP_IORGIAN_TAGS_PC_NONE}</option>
+					<option value="1"<!-- IF S_PC_WARN --> selected="selected"<!-- ENDIF -->>{L_ACP_IORGIAN_TAGS_PC_WARN}</option>
+					<option value="2"<!-- IF S_PC_BLOCK --> selected="selected"<!-- ENDIF -->>{L_ACP_IORGIAN_TAGS_PC_BLOCK}</option>
+				</select>
+			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset class="submit-buttons">
+		<legend>{L_SUBMIT}</legend>
+		<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+		<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+		{S_FORM_TOKEN}
+	</fieldset>
+</form>
+
+<!-- INCLUDE overall_footer.html -->

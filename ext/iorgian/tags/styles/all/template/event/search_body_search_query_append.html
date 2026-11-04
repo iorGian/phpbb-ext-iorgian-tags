@@ -1,0 +1,9 @@
+<!-- IF S_IORGIAN_TAGS_SEARCH -->
+<dl>
+	<dt><label for="iorgian_tags">{L_IORGIAN_TAGS_LABEL}{L_COLON}</label><br /><span>{L_IORGIAN_TAGS_SEARCH_EXPLAIN}</span></dt>
+	<dd><input type="search" class="inputbox" name="tags" id="iorgian_tags" size="40" value="{IORGIAN_TAGS_SEARCH_VALUE}" autocomplete="off" list="iorgian_tags_datalist" data-suggest="{U_IORGIAN_TAGS_SUGGEST}" data-forum="0" title="{L_IORGIAN_TAGS_LABEL}" /><datalist id="iorgian_tags_datalist"></datalist></dd>
+	<dd><label for="iorgian_tagmode1"><input type="radio" name="tagmode" id="iorgian_tagmode1" value="AND"<!-- IF not S_IORGIAN_TAGS_SEARCH_OR --> checked="checked"<!-- ENDIF --> /> {L_IORGIAN_TAGS_MODE_AND}</label></dd>
+	<dd><label for="iorgian_tagmode2"><input type="radio" name="tagmode" id="iorgian_tagmode2" value="OR"<!-- IF S_IORGIAN_TAGS_SEARCH_OR --> checked="checked"<!-- ENDIF --> /> {L_IORGIAN_TAGS_MODE_OR}</label></dd>
+</dl>
+<!-- INCLUDEJS @iorgian_tags/js/iorgian_tags.js -->
+<!-- ENDIF -->

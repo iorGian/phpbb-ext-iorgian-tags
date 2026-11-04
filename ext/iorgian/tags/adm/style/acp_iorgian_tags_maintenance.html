@@ -1,0 +1,40 @@
+<!-- INCLUDE overall_header.html -->
+
+<a id="maincontent"></a>
+
+<h1>{L_ACP_IORGIAN_TAGS_MAINTENANCE}</h1>
+<p>{L_ACP_IORGIAN_TAGS_MAINTENANCE_EXPLAIN}</p>
+
+<form id="iorgian_tags_maintenance" method="post" action="{U_ACTION}">
+	<fieldset>
+		<legend>{L_ACP_IORGIAN_TAGS_MAINTENANCE}</legend>
+		<dl>
+			<dt><label>{L_ACP_IORGIAN_TAGS_RESYNC}</label><br /><span>{L_ACP_IORGIAN_TAGS_RESYNC_EXPLAIN}</span></dt>
+			<dd><input class="button2" type="submit" name="resync" value="{L_ACP_IORGIAN_TAGS_RUN}" /></dd>
+		</dl>
+		<dl>
+			<dt><label>{L_ACP_IORGIAN_TAGS_MARK_OFFICIAL}</label><br /><span>{L_ACP_IORGIAN_TAGS_MARK_OFFICIAL_EXPLAIN} ({TOTAL_UNOFFICIAL})</span></dt>
+			<dd><input class="button2" type="submit" name="mark_official" value="{L_ACP_IORGIAN_TAGS_RUN}" onclick="return confirm('{LA_ACP_IORGIAN_TAGS_MARK_OFFICIAL_CONFIRM}');" /></dd>
+		</dl>
+		<dl>
+			<dt><label>{L_ACP_IORGIAN_TAGS_PURGE}</label><br /><span>{L_ACP_IORGIAN_TAGS_PURGE_EXPLAIN}</span></dt>
+			<dd><input class="button2" type="submit" name="purge" value="{L_ACP_IORGIAN_TAGS_RUN}" onclick="return confirm('{LA_ACP_IORGIAN_TAGS_PURGE_CONFIRM}');" /></dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>{L_ACP_IORGIAN_TAGS_IMPORT_RH}</legend>
+		<!-- IF S_RH_AVAILABLE -->
+		<dl>
+			<dt><label>{L_ACP_IORGIAN_TAGS_IMPORT_RH}</label><br /><span>{L_ACP_IORGIAN_TAGS_IMPORT_RH_EXPLAIN}</span></dt>
+			<dd><input class="button2" type="submit" name="import_rh" value="{L_ACP_IORGIAN_TAGS_RUN}" onclick="return confirm('{LA_ACP_IORGIAN_TAGS_IMPORT_RH_CONFIRM}');" /></dd>
+		</dl>
+		<!-- ELSE -->
+		<p>{L_ACP_IORGIAN_TAGS_IMPORT_RH_NONE}</p>
+		<!-- ENDIF -->
+	</fieldset>
+
+	{S_FORM_TOKEN}
+</form>
+
+<!-- INCLUDE overall_footer.html -->

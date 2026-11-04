@@ -1,0 +1,13 @@
+<!-- IF S_IORGIAN_TAGS -->
+<dl class="iorgian-tags-field">
+	<dt><label for="iorgian_tags">{L_IORGIAN_TAGS_LABEL}{L_COLON}</label></dt>
+	<dd>
+		<input type="hidden" name="iorgian_tags_present" value="1" />
+		<input type="text" name="iorgian_tags" id="iorgian_tags" class="inputbox autowidth" size="45" value="{IORGIAN_TAGS_VALUE}" autocomplete="off" list="iorgian_tags_datalist" data-suggest="{U_IORGIAN_TAGS_SUGGEST}" data-maxlen="{IORGIAN_TAGS_MAXLEN}" data-forum="{IORGIAN_TAGS_FORUM}" tabindex="2" />
+		<datalist id="iorgian_tags_datalist"></datalist>
+		<br /><span class="iorgian-tags-help">{IORGIAN_TAGS_HELP}</span>
+		<!-- IF IORGIAN_TAGS_LOCKED_HTML --><br /><span class="iorgian-tags-locked"><strong>{L_IORGIAN_TAGS_LOCKED}{L_COLON}</strong> {IORGIAN_TAGS_LOCKED_HTML}</span><!-- ENDIF -->
+	</dd>
+</dl>
+<!-- INCLUDEJS @iorgian_tags/js/iorgian_tags.js -->
+<!-- ENDIF -->

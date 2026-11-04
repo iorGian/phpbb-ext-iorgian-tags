@@ -1,0 +1,123 @@
+<!-- INCLUDE overall_header.html -->
+
+<a id="maincontent"></a>
+
+<!-- IF S_EDIT -->
+	<a href="{U_BACK}" style="float: {S_CONTENT_FLOW_END};">&laquo; {L_BACK_TO_PREV}</a>
+	<h1>{EDIT_TITLE}</h1>
+
+	<form id="iorgian_tags_tag" method="post" action="{U_ACTION}">
+		<!-- IF S_ERROR -->
+		<div class="errorbox">
+			<!-- BEGIN errors --><p>{errors.MESSAGE}</p><!-- END errors -->
+		</div>
+		<!-- ENDIF -->
+		<fieldset>
+			<dl>
+				<dt><label for="tag_name">{L_ACP_IORGIAN_TAGS_NAME}{L_COLON}</label></dt>
+				<dd><input type="text" id="tag_name" name="tag_name" value="{TAG_NAME}" maxlength="{MAX_LENGTH}" size="30" /></dd>
+			</dl>
+			<dl>
+				<dt><label for="tag_color">{L_ACP_IORGIAN_TAGS_COLOR}{L_COLON}</label><br /><span>{L_ACP_IORGIAN_TAGS_COLOR_EXPLAIN}</span></dt>
+				<dd>{TAG_COLOR_FIELD}</dd>
+			</dl>
+			<dl>
+				<dt><label for="tag_official">{L_ACP_IORGIAN_TAGS_OFFICIAL}{L_COLON}</label><br /><span>{L_ACP_IORGIAN_TAGS_OFFICIAL_EXPLAIN}</span></dt>
+				<dd>
+					<label><input type="radio" class="radio" id="tag_official" name="tag_official" value="1"<!-- IF S_TAG_OFFICIAL --> checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+					<label><input type="radio" class="radio" name="tag_official" value="0"<!-- IF not S_TAG_OFFICIAL --> checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+				</dd>
+			</dl>
+			<dl>
+				<dt><label for="group_ids">{L_ACP_IORGIAN_TAGS_ALLOWED_GROUPS}{L_COLON}</label><br /><span>{L_ACP_IORGIAN_TAGS_ALLOWED_GROUPS_EXPLAIN}</span></dt>
+				<dd>
+					<select id="group_ids" name="group_ids[]" multiple="multiple" size="8">
+					<!-- BEGIN groups -->
+						<option value="{groups.ID}"<!-- IF groups.S_SELECTED --> selected="selected"<!-- ENDIF -->>{groups.NAME}</option>
+					<!-- END groups -->
+					</select>
+				</dd>
+			</dl>
+		</fieldset>
+		<fieldset class="submit-buttons">
+			<legend>{L_SUBMIT}</legend>
+			<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />
+			{S_FORM_TOKEN}
+		</fieldset>
+	</form>
+
+<!-- ELSEIF S_MERGE -->
+	<a href="{U_BACK}" style="float: {S_CONTENT_FLOW_END};">&laquo; {L_BACK_TO_PREV}</a>
+	<h1>{L_ACP_IORGIAN_TAGS_MERGE}</h1>
+	<p>{L_ACP_IORGIAN_TAGS_MERGE_EXPLAIN}</p>
+
+	<form id="iorgian_tags_tag" method="post" action="{U_ACTION}">
+		<!-- IF S_ERROR --><div class="errorbox"><p>{ERROR_MSG}</p></div><!-- ENDIF -->
+		<fieldset>
+			<dl>
+				<dt><label>{L_ACP_IORGIAN_TAGS_MERGE_FROM}{L_COLON}</label></dt>
+				<dd><strong>{MERGE_FROM}</strong></dd>
+			</dl>
+			<dl>
+				<dt><label for="target">{L_ACP_IORGIAN_TAGS_MERGE_TARGET}{L_COLON}</label></dt>
+				<dd><input type="text" id="target" name="target" value="{TARGET}" size="30" /></dd>
+			</dl>
+		</fieldset>
+		<fieldset class="submit-buttons">
+			<legend>{L_SUBMIT}</legend>
+			<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />
+			{S_FORM_TOKEN}
+		</fieldset>
+	</form>
+
+<!-- ELSE -->
+	<h1>{L_ACP_IORGIAN_TAGS_TAGS}</h1>
+	<p>{L_ACP_IORGIAN_TAGS_TAGS_EXPLAIN}</p>
+
+	<form method="get" action="{U_ACTION}">
+		<fieldset class="quick">
+			<input type="text" name="search" value="{SEARCH}" placeholder="{L_ACP_IORGIAN_TAGS_SEARCH}" />
+			<input type="hidden" name="sort" value="{SORT}" />
+			<!-- IF S_FILTER_UNOFFICIAL --><input type="hidden" name="filter" value="unofficial" /><!-- ENDIF -->
+			<input class="button2" type="submit" value="{L_SEARCH}" />
+		</fieldset>
+	</form>
+
+	<p>
+		<a href="{U_ADD}" class="button2">{L_ACP_IORGIAN_TAGS_ADD}</a>
+		&nbsp; {L_ACP_IORGIAN_TAGS_SORT}{L_COLON} <a href="{U_SORT_NAME}"<!-- IF SORT == 'name' --> style="font-weight:bold"<!-- ENDIF -->>{L_ACP_IORGIAN_TAGS_NAME}</a> | <a href="{U_SORT_COUNT}"<!-- IF SORT == 'count' --> style="font-weight:bold"<!-- ENDIF -->>{L_ACP_IORGIAN_TAGS_TOPICS}</a>
+		&nbsp; ({TOTAL})
+		&nbsp; <a href="{U_FILTER_ALL}"<!-- IF not S_FILTER_UNOFFICIAL --> style="font-weight:bold"<!-- ENDIF -->>{L_ACP_IORGIAN_TAGS_FILTER_ALL}</a> | <a href="{U_FILTER_UNOFFICIAL}"<!-- IF S_FILTER_UNOFFICIAL --> style="font-weight:bold"<!-- ENDIF -->>{L_ACP_IORGIAN_TAGS_FILTER_UNOFFICIAL} ({TOTAL_UNOFFICIAL})</a>
+	</p>
+
+	<table class="table1">
+		<thead>
+			<tr>
+				<th>{L_ACP_IORGIAN_TAGS_PREVIEW}</th>
+				<th>{L_ACP_IORGIAN_TAGS_SLUG}</th>
+				<th>{L_ACP_IORGIAN_TAGS_GROUPS}</th>
+				<th>{L_ACP_IORGIAN_TAGS_OFFICIAL}</th>
+				<th>{L_ACP_IORGIAN_TAGS_TOPICS}</th>
+				<th>{L_ACP_IORGIAN_TAGS_ACTIONS}</th>
+			</tr>
+		</thead>
+		<tbody>
+		<!-- BEGIN tags -->
+			<tr class="<!-- IF tags.S_ROW_COUNT is even -->row1<!-- ELSE -->row2<!-- ENDIF -->">
+				<td>{tags.PREVIEW}</td>
+				<td>{tags.SLUG}</td>
+				<td><!-- IF tags.S_RESTRICTED --><strong>{tags.GROUPS}</strong><!-- ELSE -->{tags.GROUPS}<!-- ENDIF --></td>
+				<td><!-- IF tags.S_OFFICIAL -->{L_YES}<!-- ELSE -->{L_NO}<!-- ENDIF --></td>
+				<td>{tags.COUNT}</td>
+				<td><a href="{tags.U_EDIT}">{L_EDIT}</a> | <a href="{tags.U_MERGE}">{L_ACP_IORGIAN_TAGS_MERGE}</a> | <a href="{tags.U_DELETE}">{L_DELETE}</a></td>
+			</tr>
+		<!-- BEGINELSE -->
+			<tr><td colspan="6">{L_ACP_IORGIAN_TAGS_NO_TAGS}</td></tr>
+		<!-- END tags -->
+		</tbody>
+	</table>
+
+	<!-- IF PAGE_LINKS --><p class="pagination">{PAGE_LINKS}</p><!-- ENDIF -->
+<!-- ENDIF -->
+
+<!-- INCLUDE overall_footer.html -->

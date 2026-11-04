@@ -1,0 +1,23 @@
+iorgian_tags_cloud:
+    path: /tags
+    defaults: { _controller: iorgian.tags.controller:cloud }
+
+iorgian_tags_suggest:
+    path: /tags/suggest
+    defaults: { _controller: iorgian.tags.controller:suggest }
+    methods: [GET, POST]
+
+# Same URL scheme as RH Topic Tags (/tag/a,b/OR) so old links keep working.
+iorgian_tags_view:
+    path: /tag/{tags}/{mode}
+    defaults: { _controller: iorgian.tags.controller:view, mode: 'AND' }
+    requirements:
+        tags: '[^/]+'
+        mode: 'AND|OR|and|or'
+
+iorgian_tags_view_legacy:
+    path: /tag/{tags}/{mode}/{casesensitive}
+    defaults: { _controller: iorgian.tags.controller:view, mode: 'AND', casesensitive: 'false' }
+    requirements:
+        tags: '[^/]+'
+        mode: 'AND|OR|and|or'

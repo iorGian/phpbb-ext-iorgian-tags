@@ -1,0 +1,56 @@
+/* Tags: reuses the shared .iorgian-badge pill from iorgian/core */
+.iorgian-tag-link,
+.iorgian-tag-link:hover {
+	text-decoration: none;
+}
+
+.iorgian-tag-link .iorgian-tag {
+	margin-right: 0;
+	opacity: .92;
+}
+
+.iorgian-tag-link:hover .iorgian-tag {
+	opacity: 1;
+}
+
+.iorgian-tag-count {
+	opacity: .75;
+	font-weight: 400;
+	margin-left: 2px;
+}
+
+.iorgian-tags-row,
+.iorgian-tags-topic {
+	margin: 3px 0 2px;
+	line-height: 1.9;
+}
+
+.iorgian-tags-topic {
+	clear: both;
+	padding-top: 6px;
+}
+
+.iorgian-tags-cloud {
+	line-height: 2.2;
+}
+
+/* Tag cloud: size grows with usage (level 1 to 5) */
+.iorgian-tags-cloud .iorgian-tag-lv1 .iorgian-tag { font-size: .8em; }
+.iorgian-tags-cloud .iorgian-tag-lv2 .iorgian-tag { font-size: .9em; }
+.iorgian-tags-cloud .iorgian-tag-lv3 .iorgian-tag { font-size: 1em; }
+.iorgian-tags-cloud .iorgian-tag-lv4 .iorgian-tag { font-size: 1.15em; }
+.iorgian-tags-cloud .iorgian-tag-lv5 .iorgian-tag { font-size: 1.3em; }
+
+.iorgian-tags-help {
+	font-size: .9em;
+	opacity: .8;
+}
+
+.iorgian-tags-mode {
+	margin: 4px 0 8px;
+}
+
+.iorgian-tags-locked {
+	display: inline-block;
+	margin-top: 4px;
+}
