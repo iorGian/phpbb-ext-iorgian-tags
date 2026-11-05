@@ -1,24 +1,42 @@
 {
-    "name": "iorgian/tags",
-    "type": "phpbb-extension",
-    "description": "Topic tags for phpBB 3.3.x: tag cloud, tag pages (AND/OR), autocomplete, per-forum settings, colored tags, phpBB search integration, whitelist mode, import from RH Topic Tags and full compatibility with iorgian/multiprefixes. Requires iorgian/core 0.2.4-a1 or newer.",
-    "homepage": "https://nictops.net",
-    "version": "1.0.0-rc1",
-    "license": "GPL-2.0-only",
-    "authors": [
-        {
-            "name": "Georgian Iordache",
-            "role": "Developer"
-        }
-    ],
-    "require": {
-        "php": ">=7.4",
-        "composer/installers": "^1.0 || ^2.0"
-    },
-    "extra": {
-        "display-name": "Iorgian Tags",
-        "soft-require": {
-            "phpbb/phpbb": ">=3.3.0"
-        }
-    }
+	"name": "iorgian/tags",
+	"type": "phpbb-extension",
+	"description": "Topic tags for phpBB 3.3.x: tag cloud, tag pages (AND/OR), autocomplete, per-forum settings, colored tags, phpBB search integration, whitelist mode, import from RH Topic Tags and full compatibility with iorgian/multiprefixes. Requires iorgian/core 0.2.4-a1 or newer.",
+	"homepage": "https://github.com/iorGian/phpbb-ext-iorgian-tags",
+	"version": "1.0.0-rc1",
+	"time": "2026-11-04",
+	"keywords": [
+		"phpbb",
+		"extension",
+		"tags",
+		"topic tags",
+		"search",
+		"iorgian"
+	],
+	"license": "GPL-2.0-only",
+	"authors": [
+		{
+			"name": "Georgian Iordache",
+			"homepage": "https://github.com/iorGian",
+			"email": "iorgian19@gmail.com",
+			"role": "Extension Developer"
+		}
+	],
+	"require": {
+		"php": ">=7.4",
+		"iorgian/core": ">=0.2.4-a1@alpha",
+		"composer/installers": "^1.0 || ^2.0"
+	},
+	"extra": {
+		"display-name": "Iorgian Tags",
+		"soft-require": {
+			"phpbb/phpbb": ">=3.3.0"
+		},
+		"version-check": {
+			"host": "raw.githubusercontent.com",
+			"directory": "/iorGian/phpbb-ext-iorgian-tags/main",
+			"filename": "version.json",
+			"ssl": true
+		}
+	}
 }

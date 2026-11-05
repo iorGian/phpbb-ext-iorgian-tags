@@ -1,5 +1,7 @@
 * text=auto eol=lf
 .gitattributes export-ignore
 .gitignore export-ignore
+.github export-ignore
 README.md export-ignore
 LICENSE export-ignore
+version.json export-ignore
